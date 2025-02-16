@@ -13,7 +13,7 @@ import { clerkwebhooks } from "./controller/webhooks.js";
 const app = express();
 //connect to database
 ConnectTODataBase()
-    .then(() => console.log("Connect ot database"))
+    .then(() => console.log("Connect ot database LMS_Project"))
 
 app.use(cors());
 
