@@ -6,7 +6,7 @@ import {useNavigate} from 'react-router-dom'
 export default function SearchBar({data}) { 
 
     const navigate=useNavigate("");
-    const [input, setInput]= useState( data ? date :"");
+    const [input, setInput]= useState( data ? data :"");
 
     const handleOnSearch=(e)=>{
         e.preventDefault();
