@@ -1,5 +1,5 @@
 
-import { Outlet } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 import { assets } from './../../assets/assets';
 import { useContext, useEffect } from 'react';
 import AppContext from '../../context/AppContext';
@@ -8,9 +8,7 @@ const Educator = () => {
 
     const { navigate, dashboardCurr, setDashboardCurr } = useContext(AppContext)
 
-    // useEffect(() => {
-    //     navigate("/educator/educator");
-    // }, [dashboardCurr])
+    
 
 
 
@@ -39,7 +37,7 @@ const Educator = () => {
 
                 <div className="md:w-64 w-16 border-r h-[550px] text-base border-gray-300 pt-4 flex flex-col transition-all duration-200">
                     {sidebarLinks.map((item, index) => (
-                        <a href={item.path} key={index}
+                        <NavLink to={item.path} key={index}
                             onClick={() => setDashboardCurr(index)}
                             className={`flex items-center py-3 px-4 gap-3 
                             ${index === dashboardCurr ? "border-r-4 md:border-r-[6px] bg-indigo-500/10 border-indigo-500 text-indigo-500"
@@ -49,7 +47,7 @@ const Educator = () => {
                         >
                             {item.icon}
                             <p className="md:block hidden text-center">{item.name}</p>
-                        </a>
+                        </NavLink>
                     ))}
                 </div>
 

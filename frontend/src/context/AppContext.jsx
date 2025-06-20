@@ -4,11 +4,16 @@ import { createContext } from 'react'
 import { dummyCourses } from '../assets/assets';
 import { useNavigate } from 'react-router-dom';
 import humanizeDuration from "humanize-duration"
+import toast from 'react-hot-toast';
+
+import axios from 'axios'
 
 
 const AppContext = createContext();
 
 export const AppContextProvider = ({ children }) => {
+
+    axios.defaults.baseURL = import.meta.env.VITE_BACKEND_URL
 
     const currency = import.meta.env.VITE_CURRENCY;
 
@@ -24,12 +29,36 @@ export const AppContextProvider = ({ children }) => {
 
     // fetch all course 
     let allCourseFetch = async () => {
-        setAllCourse((dummyCourses))
+        try {
+
+            const { data } = await axios.get(`/api/course/course`)
+            console.log("all course", data)
+
+            if (data.success) {
+                setAllCourse(data.allCourse)
+            }
+
+        } catch (err) {
+            console.log(err)
+            toast.error(err.message)
+        }
+        // setAllCourse((dummyCourses))
     }
 
     //fetch all enrolled coursed
     const fetchEnrolledCourses = async () => {
-        setEnrolledCourses(dummyCourses);
+        try{
+
+            const {data}=await axios.get(`/api/course/enrolledCourser`)
+            console.log("fetch enrolledCourse", data)
+            if(data.success){
+                setEnrolledCourses(data.enrollerdCourse)
+            }
+
+        }catch(err){
+            toast.error(err.message)
+        }
+       // setEnrolledCourses(dummyCourses);
     }
 
 
@@ -87,7 +116,8 @@ export const AppContextProvider = ({ children }) => {
         currency, allCourse, navigate, calculateRating, isEducator, setEducator
         , calculateChapterTime, courseDuration, calculateNoofChapter, humanizeDuration,
         dashboardCurr, setDashboardCurr,
-        enrolledCourses, setEnrolledCourses
+        enrolledCourses, setEnrolledCourses,
+        axios
     }
 
     return (

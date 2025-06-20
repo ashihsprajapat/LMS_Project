@@ -13,17 +13,18 @@ import AddCourse from './page/educator/AddCourse';
 import MyCourse from './page/educator/MyCourse';
 import StudentEnrolled from './page/educator/StudentEnrolled';
 import Navbar from './component/student/Navbar';
+import { Toaster } from 'react-hot-toast';
 
 export default function App() {
 
-  const isEducatorRoute= useMatch("/educator/*")
+  const isEducatorRoute = useMatch("/educator/*")
 
   return (
     <div className='text-default min-h-screen bg-white' >
       {
-        !isEducatorRoute &&<Navbar/>
+        !isEducatorRoute && <Navbar />
       }
-      
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/course-list" element={<CourseList />} />
@@ -40,6 +41,10 @@ export default function App() {
         </Route>
 
       </Routes>
+      <Toaster
+        position="top-center"
+        reverseOrder={false}
+      />
     </div>
   )
 }

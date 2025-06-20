@@ -1,4 +1,31 @@
+import { useContext, useState } from "react";
+import AppContext from "../../context/AppContext";
+import toast from "react-hot-toast";
+
 const AddCourse = () => {
+
+    const [title, setTitle]=useState("")
+    const [description, setDescription]=useState("")
+    const [price, setPrice]=useState(null)
+    const [offer_price, setOffer_Price]=useState(null)
+    const [thumbnail,setTHumbnail]=  useState(null)
+    const [chapter,setChapter]=useState([])
+    
+
+    const { axios } = useContext(AppContext);
+
+    const submitHandler = async (e) => {
+        e.preventDefalt()
+        try {
+
+
+        } catch (err) {
+            console.log(err.message)
+            toast.error(err.message)
+        }
+    }
+
+
     return (
         <div className="py-10 flex flex-col justify-between bg-white">
             <form className="md:p-10 p-4 space-y-5 max-w-lg">

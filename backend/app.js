@@ -9,6 +9,9 @@ import ConnectTODataBase from "./config/mongoose.js";
 import "dotenv/config";
 import { clerkwebhooks } from "./controller/webhooks.js";
 import courseRouter from "./routes/course.route.js";
+import userRoute from "./routes/user.route.js";
+
+import { clerkMiddleware } from '@clerk/express'
 
 
 const app = express();
@@ -17,6 +20,7 @@ ConnectTODataBase()
     .then(() => console.log("Connect ot database LMS_Project"))
 
 app.use(cors());
+app.use(clerkMiddleware())
 
 
 app.get("/", (req, res) => {
@@ -33,3 +37,5 @@ app.listen(PORT, () => {
 
 
 app.use("/api/course",courseRouter);
+
+app.use("/api/user", userRoute);

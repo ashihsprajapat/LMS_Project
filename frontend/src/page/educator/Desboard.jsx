@@ -2,14 +2,11 @@ import { dummyDashboardData, dummyStudentEnrolled } from "../../assets/assets";
 
 const Desboard = () => {
 
-    const products = [
-        { name: "Casual Shoes", category: "Shoes", offerPrice: 999, inStock: true, image: "https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/card/productImage.png", },
-        { name: "Casual Shoes", category: "Shoes", offerPrice: 999, inStock: false, image: "https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/card/productImage2.png", },
-        { name: "Casual Shoes", category: "Shoes", offerPrice: 999, inStock: true, image: "https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/card/productImage3.png", },
-    ];
+   
 
     return (
         <div className="flex-1 py-10 flex flex-col justify-between">
+            <h1>I am dashborder</h1>
             <div className="w-full md:p-10 p-4">
                 <h2 className="pb-4 text-lg font-medium">Letest Enrolled</h2>
                 <div className="flex flex-col items-center max-w-4xl w-full overflow-hidden rounded-md bg-white border border-gray-500/20">
