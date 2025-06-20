@@ -8,6 +8,7 @@ import mongoose from "mongoose";
 import ConnectTODataBase from "./config/mongoose.js";
 import "dotenv/config";
 import { clerkwebhooks } from "./controller/webhooks.js";
+import courseRouter from "./routes/course.route.js";
 
 
 const app = express();
@@ -30,3 +31,5 @@ app.listen(PORT, () => {
     console.log("App is listing on port", PORT)
 })
 
+
+app.use("/api/course",courseRouter);
