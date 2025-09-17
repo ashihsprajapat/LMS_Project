@@ -19,7 +19,10 @@ const app = express();
 ConnectTODataBase()
     .then(() => console.log("Connect ot database LMS_Project"))
 
-app.use(cors());
+app.use(cors({
+  origin: ['https://lms-project-fawn-eta.vercel.app', 'https://localhost:5173'],
+  credentials: true
+}));
 app.use(clerkMiddleware())
 
 
